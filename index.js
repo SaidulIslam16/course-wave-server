@@ -12,6 +12,14 @@ app.get('/', (req, res) => {
     res.send('Server running')
 })
 
+// api for course with category
+
+app.get('/category/:id', (req, res) => {
+    const id = req.params.id;
+    const seletedCourse = courses.filter(course => course.category_id == id);
+    res.send(seletedCourse);
+})
+
 // category api
 
 app.get('/categories', (req, res) => {
