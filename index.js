@@ -12,12 +12,26 @@ app.get('/', (req, res) => {
     res.send('Server running')
 })
 
+// single course api
+
+app.get('/course/:id', (req, res) => {
+    const id = req.params.id;
+    const selectedCourse = courses.find(n => n.id == id);
+    res.send(selectedCourse);
+})
+
+// all courses api
+
+app.get('/course', (req, res) => {
+    res.send(courses);
+})
+
 // api for course with category
 
 app.get('/category/:id', (req, res) => {
     const id = req.params.id;
-    const seletedCourse = courses.filter(course => course.category_id == id);
-    res.send(seletedCourse);
+    const seletedCourses = courses.filter(course => course.category_id == id);
+    res.send(seletedCourses);
 })
 
 // category api
