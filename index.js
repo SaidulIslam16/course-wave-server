@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 
 // single course api
 
-app.get('/course/:id', (req, res) => {
+app.get('/courses/:id', (req, res) => {
     const id = req.params.id;
     const selectedCourse = courses.find(n => n.id == id);
     res.send(selectedCourse);
@@ -28,10 +28,15 @@ app.get('/courses', (req, res) => {
 
 // api for course with category
 
-app.get('/category/:id', (req, res) => {
+app.get('/courses/category/:id', (req, res) => {
     const id = req.params.id;
     const seletedCourses = courses.filter(course => course.category_id == id);
-    res.send(seletedCourses);
+    if (id == '00') {
+        res.send(courses);
+    }
+    else {
+        res.send(seletedCourses);
+    }
 })
 
 // category api
